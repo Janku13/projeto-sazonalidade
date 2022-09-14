@@ -1,8 +1,13 @@
 import zod,{ object, string, TypeOf , array} from "zod"
 
 const Product = zod.object({
-    id: zod.string().uuid(),
-    name: zod.string()
+  productName: zod.string(),
+  nomeFamilia: zod.string(),
+  marca: zod.string(),
+  class: zod.string(),
+  unidade: zod.string(),
+  quantidade: zod.number(),
+  categoria: zod.string(),
 });
 
 export const createSazonalidadeSchema = object({

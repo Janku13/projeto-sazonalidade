@@ -1,10 +1,19 @@
 import mongoose from 'mongoose'
 
 
+export type Product = {
+  productName: string;
+  nomeFamilia: string;
+  marca: string;
+  class: string;
+  unidade: string;
+  quantidade: number;
+  categoria: string;
+}
 
 export interface SazonalidadeDocument extends mongoose.Document {
   user: string;
-  products: string[];
+  products: Product[];
   name: string;
   description: string;
   dataInicio: string;
