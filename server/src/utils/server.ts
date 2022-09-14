@@ -5,7 +5,7 @@ import api from '../routes';
 function createServer() {
   const app = express()
   app.use(cors({
-    origin: process.env.front,
+    origin: process.env.front || 'http://localhost:3000',
     credentials:true,
   }))
 
