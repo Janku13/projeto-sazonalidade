@@ -3,7 +3,6 @@ import { API } from '../../constants';
 
 
 export const defaultParams = () => {
- 
   return {
     baseURL: API,
     headers: {
