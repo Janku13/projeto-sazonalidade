@@ -1,0 +1,52 @@
+body {
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  background-color: $bg-main;
+}
+
+section {
+  min-height: 600px;
+  padding: 30px;
+  @media #{
+ $sm-layout,
+  $xs-layout,
+  $xxs-layout
+}
+  {
+  min-height: 800px;
+}
+
+}
+
+.section {
+  margin: 100px 0px 100px 100px;
+  position: relative;
+  background-color: $bg-screen-container;
+
+
+}
+
+.section-sm {
+  padding: 50px 0;
+}
+
+.section-lg {
+  padding: 100px 0;
+}
+h1{
+  color: $text-main-color;
+  font-weight: 600;
+  font-size: 30px ;
+}
+
+h3{
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 30px;
+  color: $text-main-color;
+}
+h6{
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+}

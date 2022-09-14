@@ -1,0 +1,20 @@
+.left-side{
+  display: grid;
+  place-items: end;
+}
+.center-item{
+  display: grid;
+  place-items: center;
+}
+.show-curser{
+  &:hover {
+    cursor: pointer;
+  }
+}
+.overflow {
+  background-color: $bg-main;
+  margin-top: -16px;
+  margin-bottom: -16px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
