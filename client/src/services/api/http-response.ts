@@ -12,7 +12,3 @@ export type HttpPostParams<T> = {
   body?:T
 }
 
-export type HttpResponse<T> = {
-  statusCode: HttpStatusCode
-  body?:T
-}
