@@ -1,7 +1,8 @@
 import mongoose from 'mongoose'
 
 
-export type Product = {
+export interface Product extends mongoose.Document {
+  _id: string;
   productName: string;
   nomeFamilia: string;
   marca: string;

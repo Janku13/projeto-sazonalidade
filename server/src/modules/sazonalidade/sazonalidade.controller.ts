@@ -1,11 +1,20 @@
-import {Request,Response} from 'express'
+import { Request, Response } from 'express'
+import { v4 as uuidv4 } from 'uuid';
 import { StatusCodes } from 'http-status-codes'
 import { CreaSazonalidadeInput, UpdateSazonalidadeParams } from './sazonalidade.schema'
 import { createSazonalidade, deleteSazonalidadeService, finalAllSazonalidade, findAndUpdateSazonalidade, findSazonalidade } from './sazonalidade.service'
 
 export async function registerSazonalidade(req: Request<{}, {}, CreaSazonalidadeInput['body']>, res: Response) {  
   const body = req.body
-  const sazonalidade = await createSazonalidade(body)
+  const productWithId = body.products.map((item,idx) => {
+    return {
+      ...item,
+      _id:`${uuidv4()}`
+    }
+  }) as typeof body.products
+  console.log(productWithId)
+  const sazonalidadeTratado = {...body,products:productWithId}
+  const sazonalidade = await createSazonalidade(sazonalidadeTratado)
   try {
    return res.status(StatusCodes.CREATED).send(sazonalidade)
   } catch (e:any) {
