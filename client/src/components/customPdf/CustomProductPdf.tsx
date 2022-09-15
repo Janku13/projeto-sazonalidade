@@ -39,6 +39,7 @@ export default function CustomProductPDF({data}:Props) {
                 <View >
                   <Text>{item.categoria}</Text>
                 </View>
+                 
               </>
               
             )

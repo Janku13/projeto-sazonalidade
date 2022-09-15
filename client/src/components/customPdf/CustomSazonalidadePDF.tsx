@@ -42,6 +42,7 @@ export default function CustomSazonalidadePDF({data}:Props) {
                 <View >
                   <Text>{item.user}</Text>
                 </View>
+            
               </>
               
             )

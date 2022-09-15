@@ -1,5 +1,5 @@
 
-import { ProductBySazonalidade, SazonalidadeType } from "../types";
+import { ProductBySazonalidade, ProductType, SazonalidadeType } from "../types";
 
 
 const productHeaders = [
@@ -94,11 +94,9 @@ export const transformSazonalidadeToCsvData = (sazonalidade:SazonalidadeType[]) 
     data:dataBody
   }
 }
-export const transformProductToCsvData = (product: ProductBySazonalidade[]) => {
+export const transformProductToCsvData = (products: ProductBySazonalidade[]) => {
 
-  const listOfProducts = product.flatMap(item => {
-    return  item.products
-  })
+  const listOfProducts = getProductsListFromProductBySazonalidade(products)
 
   const dataBody = listOfProducts.flatMap((item) => {
     return {
@@ -116,4 +114,10 @@ export const transformProductToCsvData = (product: ProductBySazonalidade[]) => {
     headers: productHeaders,
     data:dataBody,
   }
+};
+export function getProductsListFromProductBySazonalidade(list:ProductBySazonalidade[]) : ProductType[] {
+   const listOfProducts = list.flatMap(item => {
+    return  item.products
+   })
+  return listOfProducts
 }

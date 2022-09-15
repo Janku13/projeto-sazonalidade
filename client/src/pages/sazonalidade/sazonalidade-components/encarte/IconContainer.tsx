@@ -5,9 +5,10 @@ import { IconText } from "../../../../utils/data";
 import { CSVLink } from "react-csv";
 import { useSelector } from "react-redux";
 import { selectSazonalidades } from "../../../../store/sazonalidade/sazonalidade-selector";
-import { transformProductToCsvData, transformSazonalidadeToCsvData } from "../../../../utils/transform-data";
+import { getProductsListFromProductBySazonalidade, transformProductToCsvData, transformSazonalidadeToCsvData } from "../../../../utils/transform-data";
 import { IconType, ProductBySazonalidade } from "../../../../types";
 import CustomSazonalidadePDF from "../../../../components/customPdf/CustomSazonalidadePDF";
+import CustomProductPDF from "../../../../components/customPdf/CustomProductPdf";
 
 
 type Props= {
@@ -24,7 +25,7 @@ export default function IconContainer({ iconData, iconClickAction, isProduct = f
 
   if (iconData.text === IconText.exportarPdf) {
     return <Col className='show-curser'>
-      <PDFDownloadLink className="icon-container remove-link-underline" document={<CustomSazonalidadePDF data={sazonalidadesList} />  } fileName="data.pdf">
+      <PDFDownloadLink className="icon-container remove-link-underline" document={isProduct ?<CustomProductPDF data={getProductsListFromProductBySazonalidade(listOfProducts)}/> : <CustomSazonalidadePDF data={sazonalidadesList} />  } fileName="data.pdf">
         {({ blob, url, loading, error }) => (loading ? 'Loading document...' : 
           <>
             {iconData.icon}
