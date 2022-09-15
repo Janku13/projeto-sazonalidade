@@ -20,13 +20,37 @@ import TipoDeEncarte from './TipoDeEncarte';
   onClick?:MouseEventHandler<MouseEvent>
 };
 
+export type ProductBySazonalidade = {
+  sazonalidadeId: string
+  products:ProductType[]
+}
 
 export default function Encarte() {
-  const [productsList,setProductsList] = useState<ProductType[]>()
+  const [productsList,setProductsList] = useState<ProductBySazonalidade[]>([])
   const sazonalidadesList = useSelector(selectSazonalidades);
 
-  const selectSazonalidade = (e: MouseEvent<HTMLTableRowElement>,index:number) => {
-    console.log(index)
+  const selectSazonalidade = (e: MouseEvent<HTMLTableRowElement>, id: string,products:ProductType[]) => {
+    const sazonalidadeIsSelected = productsList.find((item) => {
+      return item.sazonalidadeId === id
+    })
+    if (sazonalidadeIsSelected) {
+      const productListAfterUnselect = productsList.filter(item => item.sazonalidadeId !== id)
+      setProductsList(productListAfterUnselect)
+    } else {
+      setProductsList((prev) => {
+        return [
+          ...prev,
+          {
+            sazonalidadeId: id,
+            products
+          }
+        ]
+      })
+    }
+    console.log(sazonalidadeIsSelected)
+  }
+  const isSelectedSazonalidade = (id: string) => {
+    return productsList.some(item=> item.sazonalidadeId === id)
   }
 
   const csvData = [
@@ -69,7 +93,9 @@ export default function Encarte() {
       </Col>
       <CustomCard doesHavePadding={true}>
         <CustomTable tableHeader={sazonalidadeTableHeader}>
-          <SazonalidadeTableBody selectSazonalidade={selectSazonalidade} tableBody={sazonalidadesList}/>
+          <SazonalidadeTableBody
+            isSelectedSazonalidade={isSelectedSazonalidade}
+            selectSazonalidade={selectSazonalidade} tableBody={sazonalidadesList} />
         </CustomTable>
       </CustomCard>
       <h6 className="mt-5">
@@ -89,7 +115,14 @@ export default function Encarte() {
       </Col>  
       <CustomCard doesHavePadding={true}>
         <CustomTable tableHeader={productTableHeader}>
-          <ProductTableBody  tableBody={sazonalidadesList[0]? sazonalidadesList[0].products:[]}/>
+          <>
+          {
+            productsList.map((item) => {
+              return <ProductTableBody  tableBody={item.products}/>
+            })
+          }
+          </>
+        
         </CustomTable>
       </CustomCard>
       </>
