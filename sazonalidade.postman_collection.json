@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "06ab9b30-d204-47a5-954d-65f30fd35fbd",
+		"_postman_id": "a3f3fa0f-9f49-4921-a479-c99e056626c0",
 		"name": "sazonalidade",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "18883596"
+		"_exporter_id": "20238100"
 	},
 	"item": [
 		{
@@ -30,7 +30,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"user\":\"mohamed\",\r\n    \"products\":[],\r\n    \"name\":\"natal\",\r\n    \"description\":\"o melhor\",\r\n    \"dataInicio\": \"2017-03-01 14:30:32\",\r\n    \"dataFim\":\"2017-03-01 14:30:32\",\r\n    \"dataProx\":\"2017-03-01 14:30:32\",\r\n    \"status\":\"ativo\",\r\n    \"dataDeCadastro\":\"2017-03-01 14:30:32\"\r\n}",
+					"raw": "{\r\n    \"user\":\"mohamed\",\r\n    \"products\":[\r\n        {\r\n            \"productName\": \"string\",\r\n            \"nomeFamilia\": \"string\",\r\n            \"marca\": \"string\",\r\n            \"class\": \"string\",\r\n            \"unidade\": \"string\",\r\n            \"quantidade\": 3,\r\n            \"categoria\": \"string\"\r\n        },\r\n        {\r\n            \"productName\": \"string\",\r\n            \"nomeFamilia\": \"string\",\r\n            \"marca\": \"string\",\r\n            \"class\": \"string\",\r\n            \"unidade\": \"string\",\r\n            \"quantidade\": 1,\r\n            \"categoria\": \"string\"\r\n        }\r\n    ],\r\n    \"name\":\"natal\",\r\n    \"description\":\"o melhor\",\r\n    \"dataInicio\": \"2017-03-01 14:30:32\",\r\n    \"dataFim\":\"2017-03-01 14:30:32\",\r\n    \"dataProx\":\"2017-03-01 14:30:32\",\r\n    \"status\":\"ativo\",\r\n    \"dataDeCadastro\":\"2017-03-01 14:30:32\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -128,6 +128,33 @@
 						"sazonalidade",
 						"delete-sazonalidade",
 						"63210ceb832fc615673a4670"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete-many-sazonalidades",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"deleteItems\":[\"63237111f40f2ede10e98b70\",\"63237111f40f2ede10e98b72\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/sazonalidade/delete-many-sazonalidades",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"sazonalidade",
+						"delete-many-sazonalidades"
 					]
 				}
 			},

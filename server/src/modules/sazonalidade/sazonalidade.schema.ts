@@ -46,6 +46,12 @@ export const updateSazonalidadeParams = object( {
   })
 })
 
+export const deleteManySazonalidades = object({
+  body: object({
+    deleteItems:array(zod.string())
+  })
+})
+
 export const updateSazonalidadeSchema = object({
   body: object({
     user: string({
@@ -80,6 +86,7 @@ export const updateSazonalidadeSchema = object({
 })
 
 export type CreaSazonalidadeInput = TypeOf<typeof createSazonalidadeSchema>
+export type DeleteManySazonalidadesInput = TypeOf<typeof deleteManySazonalidades>
 export type UpdateSazonalidadeParams = TypeOf<typeof updateSazonalidadeParams>
 export type UpdateSazonalidadeSchema = TypeOf<typeof updateSazonalidadeSchema>
 

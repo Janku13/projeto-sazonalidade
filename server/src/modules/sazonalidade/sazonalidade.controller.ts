@@ -1,7 +1,7 @@
 import { Request, Response } from 'express'
 import { v4 as uuidv4 } from 'uuid';
 import { StatusCodes } from 'http-status-codes'
-import { CreaSazonalidadeInput, UpdateSazonalidadeParams } from './sazonalidade.schema'
+import { CreaSazonalidadeInput, DeleteManySazonalidadesInput, UpdateSazonalidadeParams } from './sazonalidade.schema'
 import { createSazonalidade, deleteSazonalidadeService, finalAllSazonalidade, findAndUpdateSazonalidade, findSazonalidade } from './sazonalidade.service'
 
 export async function registerSazonalidade(req: Request<{}, {}, CreaSazonalidadeInput['body']>, res: Response) {  
@@ -75,6 +75,23 @@ export async function deleteSazonalidade(req:Request<UpdateSazonalidadeParams['p
       await deleteSazonalidadeService({ _id })
       return res.sendStatus(StatusCodes.NO_CONTENT)
     }
+  } catch (e) {
+    return  res.status(StatusCodes.BAD_REQUEST).send("e.message") 
+  }
+}
+export async function deleteManySazonalidadesController(req:Request<{}, {},DeleteManySazonalidadesInput['body']>, res:Response) {  
+  const listOfIdToDelete = req.body.deleteItems
+  try {
+    for (let id of listOfIdToDelete) {
+      const sazonalidade = await findSazonalidade({ id })
+      console.log(id)
+      if (!sazonalidade) {
+        return  res.status(StatusCodes.NOT_FOUND).send("Não encontrado")
+      } else {
+        await deleteSazonalidadeService({ id })
+      } 
+    }
+    return res.sendStatus(StatusCodes.NO_CONTENT)
   } catch (e) {
     return  res.status(StatusCodes.BAD_REQUEST).send("e.message") 
   }

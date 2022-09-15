@@ -42,7 +42,6 @@ export default function SazonalidadeTableBody({ tableBody, selectSazonalidade, i
              </td>
               <td>
                   {formateDate(sazonalidade.dataProx)}
-             
              </td>
               <td>
                {sazonalidade.status}

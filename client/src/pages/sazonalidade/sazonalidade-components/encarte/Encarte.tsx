@@ -11,9 +11,7 @@ import { ProductBySazonalidade, ProductType } from '../../../../types';
 import { IconText, productTableHeader, produtosIcons, sazonalidadeIconsList, sazonalidadeTableHeader } from '../../../../utils/data';
 import IconContainer from './IconContainer';
 import TipoDeEncarte from './TipoDeEncarte';
- import { MouseEvent } from "react";
-
-
+import { MouseEvent } from "react";
 
 
 
