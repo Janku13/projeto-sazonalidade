@@ -3,6 +3,7 @@ import { BsTrash } from 'react-icons/bs';
 import { HiUpload } from 'react-icons/hi';
 import { Icon } from '../pages/sazonalidade/sazonalidade-components/encarte/Encarte';
 
+export const encarteItems: string[] = ['PARA VOCÊ', 'PRDUTOS MAIS VENDIDOS', 'SAZONAL', 'NAS LOJAS', 'ESPECIIAIS', 'NOVIDADES', 'BATATA']
 
 export const sazonalidadeIconsList: Icon[] = [
     {

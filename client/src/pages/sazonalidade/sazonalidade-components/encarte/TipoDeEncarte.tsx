@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { Row ,Col} from "reactstrap";
+import { encarteItems } from "../../../../utils/data";
+
 export default function TipoDeEncarte() {
   const [choosenEncarte, setChoosenEncarte] = useState('SAZONAL');
-  const encarteItems: string[] = ['PARA VOCÊ','PRDUTOS MAIS VENDIDOS','SAZONAL','NAS LOJAS','ESPECIIAIS','NOVIDADES','BATATA']
+
   return (
     <div className='p-3'>
       <Row>

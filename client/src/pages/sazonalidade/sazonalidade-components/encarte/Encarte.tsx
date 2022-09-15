@@ -1,4 +1,4 @@
-import { ReactElement, MouseEventHandler } from 'react'
+import { ReactElement, MouseEventHandler, useState } from 'react'
 import { CSVLink } from "react-csv";
 import { useSelector } from 'react-redux';
 import { Row, Col } from "reactstrap";
@@ -8,10 +8,11 @@ import CustomTable from '../../../../components/customTable/CustomTable';
 import ProductTableBody from '../../../../components/customTable/ProductTableBody';
 import SazonalidadeTableBody from '../../../../components/customTable/SazonalidadeTableBody';
 import { selectSazonalidades } from '../../../../store/sazonalidade/sazonalidade-selector';
+import { ProductType } from '../../../../types';
 import { productTableHeader, produtosIcons, sazonalidadeIconsList, sazonalidadeTableHeader } from '../../../../utils/data';
 import IconContainer from './IconContainer';
 import TipoDeEncarte from './TipoDeEncarte';
- 
+ import { MouseEvent } from "react";
 
  export type Icon = {
   text: string;
@@ -21,9 +22,12 @@ import TipoDeEncarte from './TipoDeEncarte';
 
 
 export default function Encarte() {
+  const [productsList,setProductsList] = useState<ProductType[]>()
   const sazonalidadesList = useSelector(selectSazonalidades);
 
-  console.log(sazonalidadesList)
+  const selectSazonalidade = (e: MouseEvent<HTMLTableRowElement>,index:number) => {
+    console.log(index)
+  }
 
   const csvData = [
   ["firstname", "lastname", "email"],
@@ -65,7 +69,7 @@ export default function Encarte() {
       </Col>
       <CustomCard doesHavePadding={true}>
         <CustomTable tableHeader={sazonalidadeTableHeader}>
-          <SazonalidadeTableBody tableBody={sazonalidadesList}/>
+          <SazonalidadeTableBody selectSazonalidade={selectSazonalidade} tableBody={sazonalidadesList}/>
         </CustomTable>
       </CustomCard>
       <h6 className="mt-5">
@@ -85,7 +89,7 @@ export default function Encarte() {
       </Col>  
       <CustomCard doesHavePadding={true}>
         <CustomTable tableHeader={productTableHeader}>
-          <ProductTableBody tableBody={sazonalidadesList[0]? sazonalidadesList[0].products:[]}/>
+          <ProductTableBody  tableBody={sazonalidadesList[0]? sazonalidadesList[0].products:[]}/>
         </CustomTable>
       </CustomCard>
       </>
