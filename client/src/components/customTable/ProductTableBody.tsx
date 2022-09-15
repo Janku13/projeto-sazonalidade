@@ -9,32 +9,32 @@ export default function ProductTableBody({ tableBody }: Props) {
   return (
        <tbody>
       {
-        tableBody.map((sazonalidade) => {
+        tableBody.map((product) => {
           return (
             <tr>
               <th scope='row'>
-               1
+               {product._id}
               </th>
               <td>
-               {sazonalidade.productName}
+               {product.productName}
              </td>
               <td>
-               {sazonalidade.nomeFamilia}
+               {product.nomeFamilia}
              </td>
               <td>
-               {sazonalidade.marca}
+               {product.marca}
              </td>
               <td>
-               {sazonalidade.class}
+               {product.class}
              </td>
               <td>
-               {sazonalidade.unidade}
+               {product.unidade}
              </td>
               <td>
-               {sazonalidade.quantidade}
+               {product.quantidade}
              </td>
               <td>
-               {sazonalidade.categoria}
+               {product.categoria}
              </td>
             
             </tr>

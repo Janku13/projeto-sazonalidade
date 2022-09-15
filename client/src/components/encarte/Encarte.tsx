@@ -123,7 +123,7 @@ export default function Encarte() {
       </Col>  
       <CustomCard doesHavePadding={true}>
         <CustomTable tableHeader={productTableHeader}>
-          <ProductTableBody tableBody={[]}/>
+          <ProductTableBody tableBody={sazonalidadesList[0].products}/>
         </CustomTable>
       </CustomCard>
       </>
