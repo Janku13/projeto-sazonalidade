@@ -1,5 +1,16 @@
+import { ProductType } from "./product-type";
+
 export type SazonalidadeType = {
-  id: string;
+  _id: string;
+  user: string;
+  products: ProductType[];
   name: string;
-  email: string;
+  description: string;
+  dataInicio: string;
+  dataFim: string;
+  dataProx: string;
+  status: string;
+  dataDeCadastro: string;
+  createAt: Date;
+  updateAt: Date;
 };

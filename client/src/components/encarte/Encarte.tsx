@@ -10,6 +10,8 @@ import CustomCard from "../customCard/CustomCard";
 import TipoDeEncarte from "./encarteComponents/TipoDeEncarte";
 import IconContainer from './encarteComponents/IconContainer';
 import CustomTable from '../customTable/CustomTable';
+import SazonalidadeTableBody from '../customTable/SazonalidadeTableBody';
+import ProductTableBody from '../customTable/ProductTableBody';
 
  export type Icon = {
   text: string;
@@ -19,7 +21,7 @@ import CustomTable from '../customTable/CustomTable';
 
 export default function Encarte() {
   const sazonalidadesList = useSelector(selectSazonalidades);
- 
+  console.log(sazonalidadesList)
   const produtosIcons: Icon[] = [
     {
       text: 'exportar em .csv',
@@ -47,6 +49,27 @@ export default function Encarte() {
       text: 'exportar em .pdf',
       icon: <HiUpload size={20} className="icon-action"/> 
     },
+  ]
+  const sazonalidadeTableHeader: string[] = [
+    'ID',
+    'NOME SAZONALIDADE',
+    'DESCRIÇÃO',
+    'DATA INÍCIO',
+    'DATA FIM',
+    'DATA PROX.INÍCIO',
+    'STATUS',
+    'DATA CAD.',
+    'USUÁRIO CAD',
+  ]
+  const productTableHeader: string[] = [
+    'ID',
+    'NOME PRODUTO',
+    'NOME FAMÍLIA',
+    'MARCA',
+    'CLASSE',
+    'EMB',
+    'QNT',
+    'CATEGORIA'
   ]
   return (
     <>
@@ -79,7 +102,9 @@ export default function Encarte() {
         </Row>
       </Col>
       <CustomCard doesHavePadding={true}>
-        <CustomTable/>
+        <CustomTable tableHeader={sazonalidadeTableHeader}>
+          <SazonalidadeTableBody tableBody={sazonalidadesList}/>
+        </CustomTable>
       </CustomCard>
       <h6 className="mt-5">
         LIST DE PRODUTOS
@@ -97,7 +122,9 @@ export default function Encarte() {
           </Row>
       </Col>  
       <CustomCard doesHavePadding={true}>
-        <CustomTable/>
+        <CustomTable tableHeader={productTableHeader}>
+          <ProductTableBody tableBody={[]}/>
+        </CustomTable>
       </CustomCard>
       </>
   )
