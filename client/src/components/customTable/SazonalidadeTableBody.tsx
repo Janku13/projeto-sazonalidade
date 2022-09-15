@@ -7,12 +7,13 @@ type Props= {
   selectSazonalidade: (e: MouseEvent<HTMLTableRowElement>, index: string, products: ProductType[]) => void;
   isSelectedSazonalidade: (id:string) => boolean
 };
+
 export default function SazonalidadeTableBody({ tableBody,selectSazonalidade,isSelectedSazonalidade }: Props) {
   if (tableBody.length === 0) return <tbody></tbody>;
   return (
     <tbody>
       {
-        tableBody.map((sazonalidade, index) => {
+        tableBody.map((sazonalidade) => {
           const isSelected = isSelectedSazonalidade(sazonalidade._id)
           return (
             <tr key={sazonalidade._id}
@@ -50,7 +51,6 @@ export default function SazonalidadeTableBody({ tableBody,selectSazonalidade,isS
           )
         })
       }
-  
     </tbody>
   )
 }

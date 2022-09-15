@@ -9,13 +9,15 @@ import ProductTableBody from '../../../../components/customTable/ProductTableBod
 import SazonalidadeTableBody from '../../../../components/customTable/SazonalidadeTableBody';
 import { selectSazonalidades } from '../../../../store/sazonalidade/sazonalidade-selector';
 import { ProductType } from '../../../../types';
-import { productTableHeader, produtosIcons, sazonalidadeIconsList, sazonalidadeTableHeader } from '../../../../utils/data';
+import { IconText, productTableHeader, produtosIcons, sazonalidadeIconsList, sazonalidadeTableHeader } from '../../../../utils/data';
 import IconContainer from './IconContainer';
 import TipoDeEncarte from './TipoDeEncarte';
  import { MouseEvent } from "react";
 
+
+ 
  export type Icon = {
-  text: string;
+  text: IconText;
   icon: ReactElement;
   onClick?:MouseEventHandler<MouseEvent>
 };
@@ -28,6 +30,13 @@ export type ProductBySazonalidade = {
 export default function Encarte() {
   const [productsList,setProductsList] = useState<ProductBySazonalidade[]>([])
   const sazonalidadesList = useSelector(selectSazonalidades);
+
+  const iconClickAction = (e: MouseEvent<HTMLTableRowElement>, iconText: IconText) => {
+    if (iconText === IconText.exportarCsv) {
+      console.log('csv')
+    }
+    
+  }
 
   const selectSazonalidade = (e: MouseEvent<HTMLTableRowElement>, id: string,products:ProductType[]) => {
     const sazonalidadeIsSelected = productsList.find((item) => {
@@ -62,7 +71,6 @@ export default function Encarte() {
 
   return (
     <>
-      <CSVLink data={sazonalidadesList}>Download me</CSVLink>;
       <h3>
         Encartes
       </h3>
@@ -85,7 +93,7 @@ export default function Encarte() {
           {
             sazonalidadeIconsList.map((item) => {
                 return (
-                  <IconContainer text={item.text} icon={item.icon} />
+                  <IconContainer iconClickAction={iconClickAction} iconData={item} />
                 )
             })
           }
@@ -107,7 +115,7 @@ export default function Encarte() {
             {
               produtosIcons.map((item) => {
                 return (
-                  <IconContainer text={item.text} icon={item.icon} />
+                  <IconContainer iconData={item} iconClickAction={iconClickAction} />
                 )
               })
             }

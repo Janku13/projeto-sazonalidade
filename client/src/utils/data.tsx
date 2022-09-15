@@ -3,33 +3,40 @@ import { BsTrash } from 'react-icons/bs';
 import { HiUpload } from 'react-icons/hi';
 import { Icon } from '../pages/sazonalidade/sazonalidade-components/encarte/Encarte';
 
+export const enum IconText {
+  excluir = 'excluir',
+  editar = 'editar',
+  exportarCsv = 'exportar em.csv',
+  exportarPdf = 'exportar em.pdf'
+}
+
 export const encarteItems: string[] = ['PARA VOCÊ', 'PRDUTOS MAIS VENDIDOS', 'SAZONAL', 'NAS LOJAS', 'ESPECIIAIS', 'NOVIDADES', 'BATATA']
 
 export const sazonalidadeIconsList: Icon[] = [
     {
-      text: 'editar',
+      text: IconText.editar,
       icon: <TbEdit size={20} className="icon-action"/>
     },
     {
-      text: 'exculir',
+      text: IconText.excluir,
       icon: <BsTrash size={20} className="icon-action"/>
     },
     {
-      text: 'exportar em .csv',
+      text: IconText.exportarCsv,
       icon: <HiUpload size={20} className="icon-action"/> 
     },
     {
-      text: 'exportar em .pdf',
+      text: IconText.exportarPdf,
       icon: <HiUpload size={20} className="icon-action"/> 
     },
   ]
   export const produtosIcons: Icon[] = [
     {
-      text: 'exportar em .csv',
+      text: IconText.exportarCsv,
       icon: <HiUpload size={20} className="icon-action"/> 
     },
     {
-      text: 'exportar em .pdf',
+      text: IconText.exportarPdf,
       icon: <HiUpload size={20} className="icon-action"/> 
     },
   ]

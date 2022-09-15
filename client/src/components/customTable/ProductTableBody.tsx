@@ -1,11 +1,11 @@
 import React from 'react'
 import { ProductType } from '../../types';
-import { MouseEvent } from "react";
+
 
 
 type Props= {
   tableBody: ProductType[];
-  // selectSazonalidade:(e:MouseEvent<HTMLTableRowElement>,index:number) => void;
+
 };
 export default function ProductTableBody({ tableBody }: Props) {
   if (tableBody.length === 0) return <tbody></tbody>;
