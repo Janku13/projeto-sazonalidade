@@ -1,6 +1,7 @@
 
 import CustomCard from '../../components/customCard/CustomCard'
-import Encarte from '../../components/encarte/Encarte'
+import Encarte from './sazonalidade-components/encarte/Encarte';
+
 
 export default function Sazonalidade() {
   return (

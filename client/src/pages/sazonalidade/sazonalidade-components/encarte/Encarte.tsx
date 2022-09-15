@@ -2,15 +2,16 @@ import { ReactElement, MouseEventHandler } from 'react'
 import { CSVLink } from "react-csv";
 import { useSelector } from 'react-redux';
 import { Row, Col } from "reactstrap";
-import { selectSazonalidades } from '../../store/sazonalidade/sazonalidade-selector';
-import CustomButton from "../customButton/CustomButton";
-import CustomCard from "../customCard/CustomCard";
-import TipoDeEncarte from "./encarteComponents/TipoDeEncarte";
-import IconContainer from './encarteComponents/IconContainer';
-import CustomTable from '../customTable/CustomTable';
-import SazonalidadeTableBody from '../customTable/SazonalidadeTableBody';
-import ProductTableBody from '../customTable/ProductTableBody';
-import { productTableHeader, produtosIcons, sazonalidadeIconsList, sazonalidadeTableHeader } from '../../utils/data';
+import CustomButton from '../../../../components/customButton/CustomButton';
+import CustomCard from '../../../../components/customCard/CustomCard';
+import CustomTable from '../../../../components/customTable/CustomTable';
+import ProductTableBody from '../../../../components/customTable/ProductTableBody';
+import SazonalidadeTableBody from '../../../../components/customTable/SazonalidadeTableBody';
+import { selectSazonalidades } from '../../../../store/sazonalidade/sazonalidade-selector';
+import { productTableHeader, produtosIcons, sazonalidadeIconsList, sazonalidadeTableHeader } from '../../../../utils/data';
+import IconContainer from './IconContainer';
+import TipoDeEncarte from './TipoDeEncarte';
+ 
 
  export type Icon = {
   text: string;
@@ -18,9 +19,12 @@ import { productTableHeader, produtosIcons, sazonalidadeIconsList, sazonalidadeT
   onClick?:MouseEventHandler<MouseEvent>
 };
 
+
 export default function Encarte() {
   const sazonalidadesList = useSelector(selectSazonalidades);
+
   console.log(sazonalidadesList)
+
   const csvData = [
   ["firstname", "lastname", "email"],
   ["Ahmed", "Tomi", "ah@smthing.co.com"],

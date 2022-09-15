@@ -1,7 +1,8 @@
 import { TbEdit } from 'react-icons/tb';
 import { BsTrash } from 'react-icons/bs';
 import { HiUpload } from 'react-icons/hi';
-import { Icon } from '../components/encarte/Encarte';
+import { Icon } from '../pages/sazonalidade/sazonalidade-components/encarte/Encarte';
+
 
 export const sazonalidadeIconsList: Icon[] = [
     {

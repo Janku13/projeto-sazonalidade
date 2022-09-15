@@ -8,7 +8,7 @@ type Props= {
 export default function CustomTable({ tableHeader,children }: Props) {
   return (
    
-  <Table>
+  <Table responsive={true}>
     <thead>
         <tr>
           {
