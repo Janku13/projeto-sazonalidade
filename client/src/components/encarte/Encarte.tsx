@@ -2,9 +2,6 @@ import { ReactElement, MouseEventHandler } from 'react'
 import { CSVLink } from "react-csv";
 import { useSelector } from 'react-redux';
 import { Row, Col } from "reactstrap";
-import { TbEdit } from 'react-icons/tb';
-import { BsTrash } from 'react-icons/bs';
-import { HiUpload } from 'react-icons/hi';
 import { selectSazonalidades } from '../../store/sazonalidade/sazonalidade-selector';
 import CustomButton from "../customButton/CustomButton";
 import CustomCard from "../customCard/CustomCard";
@@ -13,6 +10,7 @@ import IconContainer from './encarteComponents/IconContainer';
 import CustomTable from '../customTable/CustomTable';
 import SazonalidadeTableBody from '../customTable/SazonalidadeTableBody';
 import ProductTableBody from '../customTable/ProductTableBody';
+import { productTableHeader, produtosIcons, sazonalidadeIconsList, sazonalidadeTableHeader } from '../../utils/data';
 
  export type Icon = {
   text: string;
@@ -29,55 +27,7 @@ export default function Encarte() {
   ["Raed", "Labes", "rl@smthing.co.com"],
   ["Yezzi", "Min l3b", "ymin@cocococo.com"]
 ];
-  const produtosIcons: Icon[] = [
-    {
-      text: 'exportar em .csv',
-      icon: <HiUpload size={20} className="icon-action"/> 
-    },
-    {
-      text: 'exportar em .pdf',
-      icon: <HiUpload size={20} className="icon-action"/> 
-    },
-  ]
-  const sazonalidadeIconsList: Icon[] = [
-    {
-      text: 'editar',
-      icon:<TbEdit size={20} className="icon-action"/>
-    },
-    {
-      text: 'exculir',
-      icon: <BsTrash size={20} className="icon-action"/>
-    },
-    {
-      text: 'exportar em .csv',
-      icon: <HiUpload size={20} className="icon-action"/> 
-    },
-    {
-      text: 'exportar em .pdf',
-      icon: <HiUpload size={20} className="icon-action"/> 
-    },
-  ]
-  const sazonalidadeTableHeader: string[] = [
-    'ID',
-    'NOME SAZONALIDADE',
-    'DESCRIÇÃO',
-    'DATA INÍCIO',
-    'DATA FIM',
-    'DATA PROX.INÍCIO',
-    'STATUS',
-    'DATA CAD.',
-    'USUÁRIO CAD',
-  ]
-  const productTableHeader: string[] = [
-    'ID',
-    'NOME PRODUTO',
-    'NOME FAMÍLIA',
-    'MARCA',
-    'CLASSE',
-    'EMB',
-    'QNT',
-    'CATEGORIA'
-  ]
+
   return (
     <>
       <CSVLink data={sazonalidadesList}>Download me</CSVLink>;
