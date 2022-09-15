@@ -2,6 +2,7 @@ import React from 'react'
 import { ProductType, SazonalidadeType } from '../../types';
 import { MouseEvent } from "react";
 import moment from 'moment'
+import { formateDate } from '../../utils/date-formatter';
 
 type Props= {
   tableBody: SazonalidadeType[];
@@ -32,19 +33,23 @@ export default function SazonalidadeTableBody({ tableBody, selectSazonalidade, i
                {sazonalidade.description}
              </td>
               <td>
-               {moment(sazonalidade.dataInicio).format('DD/mm/yyyy')}
+                {formateDate(sazonalidade.dataInicio)}
+            
              </td>
               <td>
-                {moment(sazonalidade.dataFim).format('DD/mm/yyyy')} 
+                  {formateDate(sazonalidade.dataFim)}
+            
              </td>
               <td>
-                {moment(sazonalidade.dataProx).format('DD/mm/yyyy')}
+                  {formateDate(sazonalidade.dataProx)}
+             
              </td>
               <td>
                {sazonalidade.status}
              </td>
               <td>
-                {moment(sazonalidade.dataDeCadastro).format('DD/mm/yyyy')}
+                  {formateDate(sazonalidade.dataDeCadastro)}
+          
              </td>
               <td>
                {sazonalidade.user}
