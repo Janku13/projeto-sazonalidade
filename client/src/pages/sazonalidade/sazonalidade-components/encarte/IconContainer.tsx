@@ -1,24 +1,27 @@
 import { Col } from "reactstrap";
 import { text } from "stream/consumers";
 import { MouseEvent } from "react";
-import { Icon } from "./Encarte";
+import { Icon, ProductBySazonalidade } from "./Encarte";
 import { IconText } from "../../../../utils/data";
 import { CSVLink } from "react-csv";
 import { useSelector } from "react-redux";
 import { selectSazonalidades } from "../../../../store/sazonalidade/sazonalidade-selector";
-import { transformSazonalidadeToCsvData } from "../../../../utils/transform-data";
+import { transformProductToCsvData, transformSazonalidadeToCsvData } from "../../../../utils/transform-data";
+import { ProductType } from "../../../../types";
 
 type Props= {
   iconClickAction: (e: MouseEvent<HTMLTableRowElement>, index: IconText) => void;
-  iconData: Icon
+  iconData: Icon;
+  isProduct?: boolean;
+  listOfProducts:ProductBySazonalidade[]
 };
 
-export default function IconContainer({ iconData, iconClickAction }: Props) {
+export default function IconContainer({ iconData, iconClickAction, isProduct = false,listOfProducts }: Props) {
 
   const sazonalidadesList = useSelector(selectSazonalidades);
 
   if (iconData.text === IconText.exportarCsv) {
-    const { headers, data } = transformSazonalidadeToCsvData(sazonalidadesList);
+    const { headers, data } = !isProduct ? transformSazonalidadeToCsvData(sazonalidadesList) : transformProductToCsvData(listOfProducts);;
     return <Col className='show-curser' onClick={(e: MouseEvent<HTMLTableRowElement>) => iconClickAction(e, iconData.text)}>
       <CSVLink data={data} headers={headers} separator={","} className="icon-container remove-link-underline"> 
         {iconData.icon}

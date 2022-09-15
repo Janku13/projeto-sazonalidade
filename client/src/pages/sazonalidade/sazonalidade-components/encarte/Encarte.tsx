@@ -94,7 +94,7 @@ export default function Encarte() {
           {
             sazonalidadeIconsList.map((item) => {
                 return (
-                  <IconContainer iconClickAction={iconClickAction} iconData={item} />
+                  <IconContainer isProduct={false} listOfProducts={productsList} iconClickAction={iconClickAction} iconData={item} />
                 )
             })
           }
@@ -116,7 +116,12 @@ export default function Encarte() {
             {
               produtosIcons.map((item) => {
                 return (
-                  <IconContainer iconData={item} iconClickAction={iconClickAction} />
+                  <IconContainer
+                    isProduct={true}
+                    listOfProducts={productsList}
+                    iconData={item}
+                    iconClickAction={iconClickAction}
+                  />
                 )
               })
             }

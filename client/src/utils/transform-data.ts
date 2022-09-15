@@ -1,24 +1,43 @@
-import { SazonalidadeType } from "../types";
+import { ProductBySazonalidade } from "../pages/sazonalidade/sazonalidade-components/encarte/Encarte";
+import { ProductType, SazonalidadeType } from "../types";
 
 
-
-const data = [
-  { details: { firstName: 'Ahmed', lastName: 'Tomi' }, job: 'manager'},
-  { details: { firstName: 'John', lastName: 'Jones' }, job: 'developer'},
-];
-  // _id: string;
-  // user: string;
-  // products: ProductType[];
-  // name: string;
-  // description: string;
-  // dataInicio: string;
-  // dataFim: string;
-  // dataProx: string;
-  // status: string;
-  // dataDeCadastro: string;
-  // createAt: Date;
-  // updateAt: Date;
-const headers = [
+const productHeaders = [
+  {
+    label: 'ID',
+    key: '_id'
+  },
+  {
+    label: 'NOME PRODUTO',
+    key: 'nome'
+  },
+  {
+    label: 'NOME FAMÍLIA',
+    key: 'nomeFamilia'
+  },
+  {
+    label: 'MARCA',
+    key: 'marca'
+  },
+  {
+    label: 'CLASS',
+    key: 'class'
+  },
+  {
+    label: 'EMB',
+    key: 'unidade'
+  },
+  {
+    label: 'QNT',
+    key: 'quantidade'
+  },
+  {
+    label: 'CATEGORIA',
+    key: 'categoria'
+  },
+  
+]
+const sazonalidadeHeaders = [
   {
     label: 'ID',
     key: '_id'
@@ -55,7 +74,6 @@ const headers = [
     label: 'USUÁRIO CAD.',
      key: 'user'
   },
-
 ]
 export const transformSazonalidadeToCsvData = (sazonalidade:SazonalidadeType[]) => {
   const dataBody = sazonalidade.map((item) => {
@@ -72,7 +90,30 @@ export const transformSazonalidadeToCsvData = (sazonalidade:SazonalidadeType[]) 
     }
   })
   return {
-    headers: headers,
+    headers: sazonalidadeHeaders,
     data:dataBody
+  }
+}
+export const transformProductToCsvData = (product: ProductBySazonalidade[]) => {
+
+  const listOfProducts = product.flatMap(item => {
+    return  item.products
+  })
+
+  const dataBody = listOfProducts.flatMap((item) => {
+    return {
+      _id: item._id,
+      nome:item.productName,
+      nomeFamilia: item.nomeFamilia,
+      marca: item.marca,
+      class: item.class,
+      unidade: item.unidade,
+      quantidade: item.quantidade,
+      categoria: item.categoria,    
+    }
+  })
+  return {
+    headers: productHeaders,
+    data:dataBody,
   }
 }
