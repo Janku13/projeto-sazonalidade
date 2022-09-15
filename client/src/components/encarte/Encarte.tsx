@@ -1,8 +1,10 @@
-import { ReactElement,MouseEventHandler } from 'react'
+import { ReactElement, MouseEventHandler } from 'react'
+import { useSelector } from 'react-redux';
 import { Row, Col } from "reactstrap";
 import { TbEdit } from 'react-icons/tb';
 import { BsTrash } from 'react-icons/bs';
 import { HiUpload } from 'react-icons/hi';
+import { selectSazonalidades } from '../../store/sazonalidade/sazonalidade-selector';
 import CustomButton from "../customButton/CustomButton";
 import CustomCard from "../customCard/CustomCard";
 import TipoDeEncarte from "./encarteComponents/TipoDeEncarte";
@@ -16,6 +18,8 @@ import CustomTable from '../customTable/CustomTable';
 };
 
 export default function Encarte() {
+  const sazonalidadesList = useSelector(selectSazonalidades);
+ 
   const produtosIcons: Icon[] = [
     {
       text: 'exportar em .csv',
