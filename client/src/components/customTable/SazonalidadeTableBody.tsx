@@ -1,6 +1,7 @@
 import React from 'react'
 import { ProductType, SazonalidadeType } from '../../types';
 import { MouseEvent } from "react";
+import moment from 'moment'
 
 type Props= {
   tableBody: SazonalidadeType[];
@@ -8,7 +9,8 @@ type Props= {
   isSelectedSazonalidade: (id:string) => boolean
 };
 
-export default function SazonalidadeTableBody({ tableBody,selectSazonalidade,isSelectedSazonalidade }: Props) {
+export default function SazonalidadeTableBody({ tableBody, selectSazonalidade, isSelectedSazonalidade }: Props) {
+
   if (tableBody.length === 0) return <tbody></tbody>;
   return (
     <tbody>
@@ -30,19 +32,19 @@ export default function SazonalidadeTableBody({ tableBody,selectSazonalidade,isS
                {sazonalidade.description}
              </td>
               <td>
-               {sazonalidade.dataInicio}
+               {moment(sazonalidade.dataInicio).format('DD/mm/yyyy')}
              </td>
               <td>
-               {sazonalidade.dataFim}
+                {moment(sazonalidade.dataFim).format('DD/mm/yyyy')} 
              </td>
               <td>
-               {sazonalidade.dataProx}
+                {moment(sazonalidade.dataProx).format('DD/mm/yyyy')}
              </td>
               <td>
                {sazonalidade.status}
              </td>
               <td>
-               {sazonalidade.dataDeCadastro}
+                {moment(sazonalidade.dataDeCadastro).format('DD/mm/yyyy')}
              </td>
               <td>
                {sazonalidade.user}
