@@ -1,17 +1,14 @@
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch  } from "react-redux";
 import Sazonalidade from "./pages/sazonalidade/Sazonalidade";
-import sazonalidadeApi from "./services/api/sazonalidadeApi";
-function App() {
-  const error = useSelector((state) => state);
-  console.log(error)
-    useEffect(() => {
-      const fetchSazonalidades = async () => {
-        const data = await sazonalidadeApi.fetchSazonalidades()
-        console.log(data)
-    };
+import { fetchSazonalidadeRequest } from "./store/sazonalidade/sazonalidade-action";
 
-    fetchSazonalidades();
+function App() {
+  const dispatch = useDispatch<any>(); //need to fix this type
+
+  useEffect(() => {
+    dispatch(fetchSazonalidadeRequest())  
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <div className="App">

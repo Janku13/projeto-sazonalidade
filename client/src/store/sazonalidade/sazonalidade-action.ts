@@ -1,6 +1,8 @@
+import { createAction, ActionWithPayload, Action } from '../reducer-utils'
+import { Dispatch } from 'redux';
 import { SazonalidadeType } from '../../types';
-import { createAction,ActionWithPayload,Action } from '../reducer-utils'
 import { SAZONALIDADE_ACTION_TYPES } from './sazonalidade-action-types';
+import sazonalidadeApi from '../../services/api/sazonalidadeApi';
 
 
 export type FetchSazonalidadeStartType = Action<SAZONALIDADE_ACTION_TYPES.FETCH_SAZONALIDADE_START>
@@ -26,3 +28,15 @@ export const fetchSazonalidadesFailed = (error:Error) : FetchSazonalidadesFailed
   SAZONALIDADE_ACTION_TYPES.FETCH_SAZONALIDADE_FAILED,
   error
 )
+export const teste = async () => {
+  await fetchSazonalidadeRequest()
+}
+export const fetchSazonalidadeRequest = () => async (dispatch :Dispatch) => {
+  try {
+    dispatch(fetchSazonalidadesStart());
+    const data = await sazonalidadeApi.fetchSazonalidades();
+    dispatch(fetchSazonalidadesSuccess(data!))
+  } catch (e: any) {
+    dispatch(fetchSazonalidadesFailed(e))
+  }
+}
