@@ -1,11 +1,14 @@
 import { Col } from "reactstrap";
 import { MouseEvent } from "react";
+import { PDFDownloadLink} from '@react-pdf/renderer';
 import { IconText } from "../../../../utils/data";
 import { CSVLink } from "react-csv";
 import { useSelector } from "react-redux";
 import { selectSazonalidades } from "../../../../store/sazonalidade/sazonalidade-selector";
 import { transformProductToCsvData, transformSazonalidadeToCsvData } from "../../../../utils/transform-data";
 import { IconType, ProductBySazonalidade } from "../../../../types";
+import CustomSazonalidadePDF from "../../../../components/customPdf/CustomSazonalidadePDF";
+
 
 type Props= {
   iconClickAction: (e: MouseEvent<HTMLTableRowElement>, index: IconText) => void;
@@ -14,9 +17,24 @@ type Props= {
   listOfProducts:ProductBySazonalidade[]
 };
 
+
 export default function IconContainer({ iconData, iconClickAction, isProduct = false,listOfProducts }: Props) {
 
   const sazonalidadesList = useSelector(selectSazonalidades);
+
+  if (iconData.text === IconText.exportarPdf) {
+    return <Col className='show-curser'>
+      <PDFDownloadLink className="icon-container remove-link-underline" document={<CustomSazonalidadePDF data={sazonalidadesList} />  } fileName="data.pdf">
+        {({ blob, url, loading, error }) => (loading ? 'Loading document...' : 
+          <>
+            {iconData.icon}
+            <p className="icon-text">{iconData.text}</p>
+          </>
+        )}
+      </PDFDownloadLink>
+    </Col>
+
+  }
 
   if (iconData.text === IconText.exportarCsv) {
     const { headers, data } = !isProduct ? transformSazonalidadeToCsvData(sazonalidadesList) : transformProductToCsvData(listOfProducts);;

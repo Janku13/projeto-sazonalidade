@@ -27,7 +27,6 @@ export default function Encarte() {
     }
     
   }
-
   const selectSazonalidade = (e: MouseEvent<HTMLTableRowElement>, id: string,products:ProductType[]) => {
     const sazonalidadeIsSelected = productsList.find((item) => {
       return item.sazonalidadeId === id
@@ -54,6 +53,7 @@ export default function Encarte() {
 
   return (
     <>
+      
       <h3>
         Encartes
       </h3>
