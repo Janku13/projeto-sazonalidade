@@ -8,3 +8,8 @@ export type ProductType = {
   quantidade: number;
   categoria: string;
 };
+
+export type ProductBySazonalidade = {
+  sazonalidadeId: string
+  products:ProductType[]
+}

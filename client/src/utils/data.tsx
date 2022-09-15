@@ -1,7 +1,8 @@
 import { TbEdit } from 'react-icons/tb';
 import { BsTrash } from 'react-icons/bs';
 import { HiUpload } from 'react-icons/hi';
-import { Icon } from '../pages/sazonalidade/sazonalidade-components/encarte/Encarte';
+import { IconType } from '../types';
+
 
 export const enum IconText {
   excluir = 'excluir',
@@ -12,7 +13,7 @@ export const enum IconText {
 
 export const encarteItems: string[] = ['PARA VOCÊ', 'PRDUTOS MAIS VENDIDOS', 'SAZONAL', 'NAS LOJAS', 'ESPECIIAIS', 'NOVIDADES', 'BATATA']
 
-export const sazonalidadeIconsList: Icon[] = [
+export const sazonalidadeIconsList: IconType[] = [
     {
       text: IconText.editar,
       icon: <TbEdit size={20} className="icon-action"/>
@@ -30,7 +31,7 @@ export const sazonalidadeIconsList: Icon[] = [
       icon: <HiUpload size={20} className="icon-action"/> 
     },
   ]
-  export const produtosIcons: Icon[] = [
+  export const produtosIcons: IconType[] = [
     {
       text: IconText.exportarCsv,
       icon: <HiUpload size={20} className="icon-action"/> 

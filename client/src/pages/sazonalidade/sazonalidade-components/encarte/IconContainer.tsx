@@ -1,17 +1,15 @@
 import { Col } from "reactstrap";
-import { text } from "stream/consumers";
 import { MouseEvent } from "react";
-import { Icon, ProductBySazonalidade } from "./Encarte";
 import { IconText } from "../../../../utils/data";
 import { CSVLink } from "react-csv";
 import { useSelector } from "react-redux";
 import { selectSazonalidades } from "../../../../store/sazonalidade/sazonalidade-selector";
 import { transformProductToCsvData, transformSazonalidadeToCsvData } from "../../../../utils/transform-data";
-import { ProductType } from "../../../../types";
+import { IconType, ProductBySazonalidade } from "../../../../types";
 
 type Props= {
   iconClickAction: (e: MouseEvent<HTMLTableRowElement>, index: IconText) => void;
-  iconData: Icon;
+  iconData: IconType;
   isProduct?: boolean;
   listOfProducts:ProductBySazonalidade[]
 };

@@ -12,7 +12,6 @@ export async function registerSazonalidade(req: Request<{}, {}, CreaSazonalidade
       _id:`${uuidv4()}`
     }
   }) as typeof body.products
-  console.log(productWithId)
   const sazonalidadeTratado = {...body,products:productWithId}
   const sazonalidade = await createSazonalidade(sazonalidadeTratado)
   try {
@@ -36,7 +35,6 @@ export async function  fetchSazonalidades(_:Request, res:Response) {
 
 export async function getSazonalidade(req: Request<UpdateSazonalidadeParams['params'], {}, {}>, res: Response) {
   const _id = req.params.sazonalidadeId
-  console.log(_id)
   try {
     const sazonalidade = await findSazonalidade({ _id })
     if (sazonalidade) {

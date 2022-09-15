@@ -1,5 +1,5 @@
-import { ProductBySazonalidade } from "../pages/sazonalidade/sazonalidade-components/encarte/Encarte";
-import { ProductType, SazonalidadeType } from "../types";
+
+import { ProductBySazonalidade, SazonalidadeType } from "../types";
 
 
 const productHeaders = [

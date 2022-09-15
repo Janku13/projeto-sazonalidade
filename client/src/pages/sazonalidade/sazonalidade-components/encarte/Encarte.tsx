@@ -1,5 +1,4 @@
-import { ReactElement, MouseEventHandler, useState } from 'react'
-import { CSVLink } from "react-csv";
+import { useState } from 'react'
 import { useSelector } from 'react-redux';
 import { Row, Col } from "reactstrap";
 import CustomButton from '../../../../components/customButton/CustomButton';
@@ -8,7 +7,7 @@ import CustomTable from '../../../../components/customTable/CustomTable';
 import ProductTableBody from '../../../../components/customTable/ProductTableBody';
 import SazonalidadeTableBody from '../../../../components/customTable/SazonalidadeTableBody';
 import { selectSazonalidades } from '../../../../store/sazonalidade/sazonalidade-selector';
-import { ProductType } from '../../../../types';
+import { ProductBySazonalidade, ProductType } from '../../../../types';
 import { IconText, productTableHeader, produtosIcons, sazonalidadeIconsList, sazonalidadeTableHeader } from '../../../../utils/data';
 import IconContainer from './IconContainer';
 import TipoDeEncarte from './TipoDeEncarte';
@@ -16,17 +15,7 @@ import TipoDeEncarte from './TipoDeEncarte';
 
 
 
- 
- export type Icon = {
-  text: IconText;
-  icon: ReactElement;
-  onClick?:MouseEventHandler<MouseEvent>
-};
 
-export type ProductBySazonalidade = {
-  sazonalidadeId: string
-  products:ProductType[]
-}
 
 export default function Encarte() {
   const [productsList,setProductsList] = useState<ProductBySazonalidade[]>([])
@@ -57,18 +46,11 @@ export default function Encarte() {
         ]
       })
     }
-    console.log(sazonalidadeIsSelected)
+
   }
   const isSelectedSazonalidade = (id: string) => {
     return productsList.some(item=> item.sazonalidadeId === id)
   }
-
-  const csvData = [
-  ["firstname", "lastname", "email"],
-  ["Ahmed", "Tomi", "ah@smthing.co.com"],
-  ["Raed", "Labes", "rl@smthing.co.com"],
-  ["Yezzi", "Min l3b", "ymin@cocococo.com"]
-];
 
   return (
     <>
