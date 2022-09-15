@@ -15,6 +15,7 @@ import TipoDeEncarte from './TipoDeEncarte';
  import { MouseEvent } from "react";
 
 
+
  
  export type Icon = {
   text: IconText;
