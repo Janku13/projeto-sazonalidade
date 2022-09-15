@@ -1,4 +1,5 @@
 import { ReactElement, MouseEventHandler } from 'react'
+import { CSVLink } from "react-csv";
 import { useSelector } from 'react-redux';
 import { Row, Col } from "reactstrap";
 import { TbEdit } from 'react-icons/tb';
@@ -22,6 +23,12 @@ import ProductTableBody from '../customTable/ProductTableBody';
 export default function Encarte() {
   const sazonalidadesList = useSelector(selectSazonalidades);
   console.log(sazonalidadesList)
+  const csvData = [
+  ["firstname", "lastname", "email"],
+  ["Ahmed", "Tomi", "ah@smthing.co.com"],
+  ["Raed", "Labes", "rl@smthing.co.com"],
+  ["Yezzi", "Min l3b", "ymin@cocococo.com"]
+];
   const produtosIcons: Icon[] = [
     {
       text: 'exportar em .csv',
@@ -73,6 +80,7 @@ export default function Encarte() {
   ]
   return (
     <>
+      <CSVLink data={sazonalidadesList}>Download me</CSVLink>;
       <h3>
         Encartes
       </h3>
@@ -123,7 +131,7 @@ export default function Encarte() {
       </Col>  
       <CustomCard doesHavePadding={true}>
         <CustomTable tableHeader={productTableHeader}>
-          <ProductTableBody tableBody={sazonalidadesList[0].products}/>
+          <ProductTableBody tableBody={sazonalidadesList[0]? sazonalidadesList[0].products:[]}/>
         </CustomTable>
       </CustomCard>
       </>
