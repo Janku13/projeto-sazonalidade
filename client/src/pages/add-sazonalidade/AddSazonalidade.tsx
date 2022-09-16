@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { Row } from 'reactstrap'
 import CustomButton from '../../components/customButton/CustomButton'
 import CustomCard from '../../components/customCard/CustomCard'
+import AddSazonalidadeForm from "./AddSazonalidadeForm";
 
 export default function AddSazonalidade() {
   const navigation = useNavigate()
@@ -25,10 +26,7 @@ export default function AddSazonalidade() {
         </>
       </CustomCard>
       <CustomCard doesHavePadding={true}>
-        <form action="">
-          <label htmlFor="userName">Nome do Usuário</label>
-          <input type="text" id="userName" />
-        </form>
+        <AddSazonalidadeForm/>
       </CustomCard>
       </section>
   )
