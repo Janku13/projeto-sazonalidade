@@ -12,8 +12,8 @@ export default function CustomTable({ tableHeader,children }: Props) {
     <thead>
         <tr>
           {
-            tableHeader.map((item) => {
-              return <th>
+            tableHeader.map((item,idx) => {
+              return <th key={idx}>
                       {item}
                     </th>
               })

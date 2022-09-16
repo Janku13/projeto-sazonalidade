@@ -11,5 +11,5 @@ export const selectSazonalidades = createSelector(
 );
 export const selectSazonalidadesIsLoading = createSelector(
   [selectSazonalidadesReducer],
-  (categoriesSlice) => categoriesSlice.isLoading
+  (sazonalidadesSlice) => sazonalidadesSlice.isLoading
 );

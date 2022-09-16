@@ -26,7 +26,7 @@ export default function IconContainer({ iconData, iconClickAction, isProduct = f
   if (iconData.text === IconText.exportarPdf) {
     return <Col className='show-curser'>
       <PDFDownloadLink className="icon-container remove-link-underline" document={isProduct ?<CustomProductPDF data={getProductsListFromProductBySazonalidade(listOfProducts)}/> : <CustomSazonalidadePDF data={sazonalidadesList} />  } fileName="data.pdf">
-        {({ blob, url, loading, error }) => (loading ? 'Loading document...' : 
+        {({ blob, url, loading, error }) => (  //realizar melhor tratamento de loading e de error
           <>
             {iconData.icon}
             <p className="icon-text">{iconData.text}</p>
@@ -38,13 +38,23 @@ export default function IconContainer({ iconData, iconClickAction, isProduct = f
   }
 
   if (iconData.text === IconText.exportarCsv) {
-    const { headers, data } = !isProduct ? transformSazonalidadeToCsvData(sazonalidadesList) : transformProductToCsvData(listOfProducts);;
+    console.log(sazonalidadesList)
+    if (sazonalidadesList.length === 0) {
+     return  <Col className='show-curser' onClick={(e: MouseEvent<HTMLTableRowElement>) => iconClickAction(e, iconData.text)}>
+      <CSVLink data={[]}  separator={","} className="icon-container remove-link-underline"> 
+        {iconData.icon}
+        <p className="icon-text">{iconData.text}</p>
+      </CSVLink>
+    </Col>
+    } else {
+    const { headers, data } = !isProduct ? transformSazonalidadeToCsvData(sazonalidadesList) : transformProductToCsvData(listOfProducts);
     return <Col className='show-curser' onClick={(e: MouseEvent<HTMLTableRowElement>) => iconClickAction(e, iconData.text)}>
       <CSVLink data={data} headers={headers} separator={","} className="icon-container remove-link-underline"> 
         {iconData.icon}
         <p className="icon-text">{iconData.text}</p>
       </CSVLink>
     </Col>
+    }
 
   }
   return (

@@ -14,7 +14,7 @@ export default function CustomProductPDF({data}:Props) {
         {
           data.map((item) => {
             return (
-              <>
+              <div key={item._id}>
                 <View >
                   <Text>{item._id}</Text>
                 </View>
@@ -40,7 +40,7 @@ export default function CustomProductPDF({data}:Props) {
                   <Text>{item.categoria}</Text>
                 </View>
                  
-              </>
+              </div>
               
             )
           })

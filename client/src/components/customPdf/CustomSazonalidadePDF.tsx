@@ -14,7 +14,7 @@ export default function CustomSazonalidadePDF({data}:Props) {
         {
           data.map((item) => {
             return (
-              <>
+              <div key={item._id}>
                 <View >
                   <Text>{item._id}</Text>
                 </View>
@@ -43,7 +43,7 @@ export default function CustomSazonalidadePDF({data}:Props) {
                   <Text>{item.user}</Text>
                 </View>
             
-              </>
+              </div>
               
             )
           })

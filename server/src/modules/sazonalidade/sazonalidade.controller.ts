@@ -83,6 +83,7 @@ export async function deleteManySazonalidadesController(req:Request<{}, {},Delet
   const listOfIdToDelete = req.body.deleteItems
   try {
     for (let id of listOfIdToDelete) {
+      
       const sazonalidade = await findSazonalidade({ id })
       console.log(id)
       if (!sazonalidade) {
@@ -91,7 +92,9 @@ export async function deleteManySazonalidadesController(req:Request<{}, {},Delet
         await deleteSazonalidadeService({ id })
       } 
     }
-    return res.sendStatus(StatusCodes.NO_CONTENT)
+    const sazonalidades = await finalAllSazonalidade();
+    console.log(sazonalidades)
+    return res.status(StatusCodes.OK).send(sazonalidades)
   } catch (e) {
     return  res.status(StatusCodes.BAD_REQUEST).send("e.message") 
   }

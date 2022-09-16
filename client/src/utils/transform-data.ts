@@ -75,7 +75,7 @@ const sazonalidadeHeaders = [
      key: 'user'
   },
 ]
-export const transformSazonalidadeToCsvData = (sazonalidade:SazonalidadeType[]) => {
+export const transformSazonalidadeToCsvData = (sazonalidade: SazonalidadeType[]) => {
   const dataBody = sazonalidade.map((item) => {
     return {
       _id: item._id,
@@ -120,4 +120,8 @@ export function getProductsListFromProductBySazonalidade(list:ProductBySazonalid
     return  item.products
    })
   return listOfProducts
+}
+export function getSelectedSazonalidadesId(list: ProductBySazonalidade[]): string[] {
+  const listOfSelectedSazonalidadesId = list.map(item=> item.sazonalidadeId)
+  return listOfSelectedSazonalidadesId
 }

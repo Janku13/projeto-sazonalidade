@@ -29,8 +29,26 @@ export const sazonalidadeReducer = (
       return {
         ...state,
         sazonalidades: action.payload,
+        isLoading:false
       };
     case SAZONALIDADE_ACTION_TYPES.FETCH_SAZONALIDADE_FAILED:
+      return {
+        ...state,
+        error: action.payload,
+        isLoading: false,
+      };
+    case SAZONALIDADE_ACTION_TYPES.DELETE_SAZONALIDADES_START:
+      return {
+        ...state,
+        isLoading: true,
+      };
+    case SAZONALIDADE_ACTION_TYPES.DELETE_SAZONALIDADES_SUCCESS:
+      return {
+        ...state,
+        sazonalidades: action.payload,
+        isLoading: false,
+      };
+    case SAZONALIDADE_ACTION_TYPES.DELETE_SAZONALIDADES_FAILED:
       return {
         ...state,
         error: action.payload,

@@ -1,7 +1,6 @@
 import React from 'react'
 import { ProductType, SazonalidadeType } from '../../types';
 import { MouseEvent } from "react";
-import moment from 'moment'
 import { formateDate } from '../../utils/date-formatter';
 
 type Props= {
@@ -11,7 +10,6 @@ type Props= {
 };
 
 export default function SazonalidadeTableBody({ tableBody, selectSazonalidade, isSelectedSazonalidade }: Props) {
-
   if (tableBody.length === 0) return <tbody></tbody>;
   return (
     <tbody>

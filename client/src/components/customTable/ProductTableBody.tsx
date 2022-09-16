@@ -8,11 +8,15 @@ type Props= {
 
 };
 export default function ProductTableBody({ tableBody }: Props) {
-  if (tableBody.length === 0) return <tbody></tbody>;
+
+  if (tableBody.length === 0) {
+    return <tbody> </tbody>
+  }
   return (
        <tbody>
       {
-        tableBody.map((product,index) => {
+        tableBody.map((product) => {
+          console.log(product)
           return (
             <tr key={product._id}>
               <th scope='row'>
