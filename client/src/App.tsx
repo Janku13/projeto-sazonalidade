@@ -1,19 +1,14 @@
-import { useEffect } from "react";
-import { useDispatch  } from "react-redux";
 import Sazonalidade from "./pages/sazonalidade/Sazonalidade";
-import { fetchSazonalidadeRequest } from "./store/sazonalidade/sazonalidade-action";
+import { Routes, Route } from 'react-router-dom';
+import AddSazonalidade from "./pages/add-sazonalidade/AddSazonalidade";
 
 function App() {
-  const dispatch = useDispatch<any>(); //need to fix this type
-
-  useEffect(() => {
-    dispatch(fetchSazonalidadeRequest())  
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+//  <Sazonalidade/>
   return (
-    <div className="App">
-      <Sazonalidade/>
-    </div>
+    <Routes>
+      <Route path='/' element={<Sazonalidade />}/>
+      <Route path='/add-sazonalidade' element={<AddSazonalidade />}/>
+    </Routes>
   );
 }
 

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+
 import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col, Spinner } from "reactstrap";
 import CustomButton from '../../../../components/customButton/CustomButton';
@@ -14,12 +15,19 @@ import IconContainer from './IconContainer';
 import TipoDeEncarte from './TipoDeEncarte';
 import { MouseEvent } from "react";
 import { deleteSazonalidadesRequest } from '../../../../store/sazonalidade/sazonalidade-action';
+import { useNavigate } from 'react-router-dom';
 
 export default function Encarte() {
+  const navigate = useNavigate();
   const dispatch = useDispatch<any>()
   const isLoading = useSelector(selectSazonalidadesIsLoading)
   const [productsList, setProductsList] = useState<ProductBySazonalidade[]>([])
   const sazonalidadesList = useSelector(selectSazonalidades);
+
+  const goToAddSazonalidadePage =  (e: MouseEvent<HTMLButtonElement>)  =>{
+    console.log('e')
+    navigate('/add-sazonalidade')
+  }
 
   const iconClickAction = (e: MouseEvent<HTMLTableRowElement>, iconText: IconText) => {
     if (iconText === IconText.excluir) {
@@ -57,6 +65,7 @@ export default function Encarte() {
       <Spinner/>
     </div>
   }
+  
   return (
     <>
       
@@ -65,7 +74,7 @@ export default function Encarte() {
       </h3>
       <Row>
         <div className="left-side">
-          <CustomButton buttonText={"Adicionar"}/>
+          <CustomButton onSubmitHandler={goToAddSazonalidadePage} buttonText={"Adicionar"}/>
         </div>
       </Row>
       <h6>
