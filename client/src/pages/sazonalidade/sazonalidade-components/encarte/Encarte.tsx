@@ -15,8 +15,6 @@ import TipoDeEncarte from './TipoDeEncarte';
 import { MouseEvent } from "react";
 import { deleteSazonalidadesRequest } from '../../../../store/sazonalidade/sazonalidade-action';
 
-
-
 export default function Encarte() {
   const dispatch = useDispatch<any>()
   const isLoading = useSelector(selectSazonalidadesIsLoading)

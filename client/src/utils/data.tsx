@@ -11,7 +11,7 @@ export const enum IconText {
   exportarPdf = 'exportar em.pdf'
 }
 
-export const encarteItems: string[] = ['PARA VOCÊ', 'PRDUTOS MAIS VENDIDOS', 'SAZONAL', 'NAS LOJAS', 'ESPECIIAIS', 'NOVIDADES', 'BATATA']
+export const encarteItems: string[] = ['PARA VOCÊ', 'PRDUTOS MAIS VENDIDOS', 'SAZONAL', 'NAS LOJAS', 'ESPECIIAIS', 'NOVIDADES']
 
 export const sazonalidadeIconsList: IconType[] = [
     {
