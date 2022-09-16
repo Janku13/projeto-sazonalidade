@@ -16,7 +16,7 @@ export default function ProductTableBody({ tableBody }: Props) {
        <tbody>
       {
         tableBody.map((product) => {
-          console.log(product)
+   
           return (
             <tr key={product._id}>
               <th scope='row'>

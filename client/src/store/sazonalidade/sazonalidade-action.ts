@@ -62,7 +62,6 @@ export const deleteSazonalidadesRequest = (body:string[]) => async (dispatch :Di
     }
     dispatch(deleteSazonalidadesByIdsStart());
     const data = await sazonalidadeApi.deleteSazonalidadesByIds<DeleteBody, SazonalidadeType[]>(bodyObject);
-    console.log("data",data)
     if (data === null) return;
     dispatch(deleteSazonalidadesByIdsSucces(data))
   } catch (e: any) {

@@ -38,7 +38,6 @@ export default function IconContainer({ iconData, iconClickAction, isProduct = f
   }
 
   if (iconData.text === IconText.exportarCsv) {
-    console.log(sazonalidadesList)
     if (sazonalidadesList.length === 0) {
      return  <Col className='show-curser' onClick={(e: MouseEvent<HTMLTableRowElement>) => iconClickAction(e, iconData.text)}>
       <CSVLink data={[]}  separator={","} className="icon-container remove-link-underline"> 
